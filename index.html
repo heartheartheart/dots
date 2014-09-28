@@ -7,6 +7,14 @@
 
 	<body>
 		<script src="dotdotdot.js"></script>
-		<script>dotdotdot.standalone();</script>
+		<script>
+			dotdotdot.standalone();
+
+			document.onkeypress = function(ev) {
+				if (ev.key == " ") {
+					dotdotdot.standalone();
+				}
+			}
+		</script>
 	</body>
 </html>
