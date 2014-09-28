@@ -13,103 +13,26 @@ dotdotdot.run = function(canvas) {
 
   var env = {r: r, s: s, c: c};
 
-  var c1 = {x: 0.5 * third, y: horizon},
-      c2 = {x: 0.5 * third + third, y: horizon},
-      c3 = {x: 0.5 * third + 2 * third, y: horizon};
-
-  ctx.save();
-
-  for (var o = 1; o < 6; o += 2) {
-    ctx.beginPath();
-    ctx.arc(c1.x, c1.y * o, r, 0, 2 * Math.PI);
-    ctx.stroke();
+  var cs = [{x: 0, y: 1}, {x: 1, y: 1}, {x: 2, y: 1},
+            {x: 0, y: 3}, {x: 1, y: 3}, {x: 2, y: 3},
+            {x: 0, y: 5}, {x: 1, y: 5}, {x: 2, y: 5}];
+  var ds = Object.keys(dotdotdot.dots);
+  for (var i = 0; i < cs.length; i++) {
+    var c = cs[i],
+        p = {x: 0.5 * third + third * c.x, y: horizon * c.y},
+        d = ds[i];
 
     ctx.beginPath();
-    ctx.arc(c2.x, c2.y * o, r, 0, 2 * Math.PI);
+    ctx.arc(p.x, p.y, r, 0, 2 * Math.PI);
     ctx.stroke();
 
-    ctx.beginPath();
-    ctx.arc(c3.x, c3.y * o, r, 0, 2 * Math.PI);
-    ctx.stroke();
+    ctx.save();
+    ctx.translate(p.x, p.y);
+
+    dotdotdot.dots[d](ctx, env);
+
+    ctx.restore();
   }
-
-  ctx.restore();
-
-  // pt 1
-  ctx.save();
-  ctx.translate(c1.x, c1.y);
-
-  dotdotdot.dots.lines(ctx, env);
-
-  ctx.restore();
-
-  // pt 1, variant 1
-  ctx.save();
-  ctx.translate(c2.x, c2.y);
-
-  dotdotdot.dots.wildLines(ctx, env);
-
-  ctx.restore();
-
-  // pt 2, rectangles
-  ctx.save();
-  ctx.translate(c3.x, c3.y);
-
-  dotdotdot.dots.rectangles(ctx, env);
-
-  ctx.restore();
-
-  // pt 3, triangles
-  ctx.save();
-  ctx.translate(c1.x, c1.y * 3);
-
-  dotdotdot.dots.triangles(ctx, env);
-
-  ctx.restore();
-
-  // pt 5, spiral
-  ctx.save();
-  ctx.translate(c2.x, c2.y * 3);
-
-  dotdotdot.dots.spiral(ctx, env);
-
-  ctx.stroke();
-  ctx.restore();
-
-  // pt x, path
-  ctx.save();
-  ctx.translate(c3.x, c3.y * 3);
-
-  dotdotdot.dots.connectedLines(ctx, env);
-
-  ctx.stroke();
-  ctx.restore();
-
-  // pt ?, squigglies
-  ctx.save();
-  ctx.translate(c1.x, c1.y * 5);
-
-  dotdotdot.dots.squigglies(ctx, env);
-
-  ctx.stroke();
-  ctx.restore();
-
-  // pt z, in circles
-  ctx.save();
-  ctx.translate(c2.x, c2.y * 5);
-
-  dotdotdot.dots.growingCircles(ctx, env);
-
-  ctx.stroke();
-  ctx.restore();
-
-  // pt a, in rectangles
-  ctx.save();
-  ctx.translate(c3.x, c3.y * 5);
-
-  dotdotdot.dots.growingRectangles(ctx, env);
-
-  ctx.restore();
 }
 
 dotdotdot.dots = {};
@@ -195,6 +118,8 @@ dotdotdot.dots.spiral = function(ctx, env) {
   //   ctx.lineTo(Math.random() * 2, Math.random() * 2);
     theta += 0.1;
   }
+
+  ctx.stroke();
 }
 
 dotdotdot.dots.connectedLines = function(ctx, env) {
@@ -208,6 +133,8 @@ dotdotdot.dots.connectedLines = function(ctx, env) {
     ctx.lineTo(r * c, r * s);
     ctx.restore();
   }
+
+  ctx.stroke();
 }
 
 dotdotdot.dots.squigglies = function(ctx, env) {
@@ -222,6 +149,8 @@ dotdotdot.dots.squigglies = function(ctx, env) {
     ctx.rotate(2 * Math.PI * Math.random());
     ctx.quadraticCurveTo(r * c, r * s, x, y);
   }
+
+  ctx.stroke();
 }
 
 dotdotdot.dots.growingCircles = function(ctx, env) {
