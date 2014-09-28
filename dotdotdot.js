@@ -188,9 +188,10 @@ dotdotdot.standalone = function() {
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
+    dotdotdot.run(canvas);
   }
-  resize();
   window.onresize = resize;
 
-  dotdotdot.run(canvas);
+  resize();
 }
