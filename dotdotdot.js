@@ -1,7 +1,13 @@
 var dotdotdot = {};
 
+dotdotdot.invert = false;
+
 dotdotdot.run = function(canvas) {
   var ctx = canvas.getContext("2d");
+  if (dotdotdot.invert) {
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "white";
+  }
 
   // start the fun
   var third = canvas.width / 3;

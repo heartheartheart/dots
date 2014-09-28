@@ -13,6 +13,10 @@
 			document.onkeypress = function(ev) {
 				if (ev.key == " ") {
 					dotdotdot.standalone();
+				} else if (ev.ctrlKey && ev.key == "i") {
+					dotdotdot.invert = !dotdotdot.invert;
+					dotdotdot.standalone();
+					ev.preventDefault();
 				}
 			}
 		</script>
