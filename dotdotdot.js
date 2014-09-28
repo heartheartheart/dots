@@ -197,6 +197,7 @@ dotdotdot.run = function(canvas) {
 
 dotdotdot.standalone = function() {
   document.body.innerHTML = "<canvas id=\"canvas\"></canvas>";
+  canvas.style.display = "block";
   document.body.style.margin = 0;
 
   function resize() {
