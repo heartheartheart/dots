@@ -11,9 +11,9 @@
 			dotdotdot.standalone();
 
 			document.onkeypress = function(ev) {
-				if (ev.key == " ") {
+				if (ev.charCode == 32) { // space
 					dotdotdot.standalone();
-				} else if (ev.ctrlKey && ev.key == "i") {
+				} else if (ev.ctrlKey && ev.charCode == 9) { // ctrl + i
 					dotdotdot.invert = !dotdotdot.invert;
 					dotdotdot.standalone();
 					ev.preventDefault();
