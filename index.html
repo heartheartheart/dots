@@ -10,10 +10,10 @@
 		<script>
 			dotdotdot.standalone();
 
-			document.onkeypress = function(ev) {
-				if (ev.charCode == 32) { // space
+			document.onkeydown = function(ev) {
+				if (ev.keyCode == 32) { // space
 					dotdotdot.standalone();
-				} else if (ev.ctrlKey && ev.charCode == 9) { // ctrl + i
+				} else if (ev.ctrlKey && ev.keyCode == 73) { // ctrl + i
 					dotdotdot.invert = !dotdotdot.invert;
 					dotdotdot.standalone();
 					ev.preventDefault();
