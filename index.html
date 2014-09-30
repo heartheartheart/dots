@@ -13,7 +13,7 @@
 			document.onkeydown = function(ev) {
 				if (ev.keyCode == 32) { // space
 					dotdotdot.standalone();
-				} else if (ev.ctrlKey && ev.keyCode == 73) { // ctrl + i
+				} else if (ev.ctrlKey && !ev.shiftKey && ev.keyCode == 73) { // ctrl + i
 					dotdotdot.invert = !dotdotdot.invert;
 					dotdotdot.standalone();
 					ev.preventDefault();
