@@ -11,3 +11,4 @@
 - microKanren
 - gzip (alteratively: how file formats work, pngs, jpegs, ... would also be interesting)
 - intro to signal processing (please make these fourier things less scary)
+- backup docker containers, or how to backup your system in general
