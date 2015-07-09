@@ -11,4 +11,9 @@
 - microKanren
 - gzip (alteratively: how file formats work, pngs, jpegs, ... would also be interesting)
 - intro to signal processing (please make these fourier things less scary)
-- backup docker containers, or how to backup your system in general
+- backup 101:
+  - how to make full system backups *and* restore them using `dd{,_rescue}`
+  - (sophisticated) backup of `/home/$USER` via `rsync` (and piping through `xz`)
+  - what are the pros and cons of both methods?
+  - how to backup/restore docker containers?
+  - why do [I need backups](http://www.ee.ryerson.ca/~elf/hack/recovery.html) in the first place?
