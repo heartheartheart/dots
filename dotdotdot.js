@@ -201,3 +201,25 @@ dotdotdot.standalone = function() {
 
   resize();
 }
+
+dotdotdot.animate = function() {
+  if (Math.random() < 0.05) {
+    dotdotdot.invert = !dotdotdot.invert;
+  }
+  
+  dotdotdot.standalone();
+  
+  if (dotdotdot.animate.currentStep < dotdotdot.animate.steps) {
+    window.setTimeout(dotdotdot.animate, Math.round(Math.random() * 2000));
+  }
+  dotdotdot.animate.currentStep += 1;
+}
+dotdotdot.animate.steps = 10;
+dotdotdot.animate.currentStep = 0;
+
+dotdotdot.animate.start = function(n) {
+  dotdotdot.animate.steps = n == null ? 10 : n;
+  dotdotdot.animate.currentStep = 0;
+  
+  dotdotdot.animate();
+}
